@@ -14,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+
       <BottomNavigationContext enabled={value}>
         <BottomNavigationView id={0}>
           <Button>
@@ -32,9 +33,10 @@ function App() {
             value={value}
             onChange={handleChange}
         >
-          <BottomNavigationAction value={0} label="Instances" icon={<Article />} />
-          <BottomNavigationAction value={1} label="Settings" icon={<Settings />} />
+
         </BottomNavigation>
+        <BottomNavigationAction value={0} label="Instances" icon={<Article />} />
+        <BottomNavigationAction value={1} label="Settings" icon={<Settings />} />
       </Box>
     </div>
   );

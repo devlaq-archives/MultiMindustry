@@ -10,9 +10,7 @@ class BottomNavigationView extends React.Component<BottomNavigationViewProps> {
 
   render() {
     return (
-      <Slide>
-        {this.props.children}
-      </Slide>
+        this.props.children
     )
   }
 
