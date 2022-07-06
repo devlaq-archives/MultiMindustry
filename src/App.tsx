@@ -1,9 +1,20 @@
 import React from 'react';
 import './App.css';
 import '@mui/material';
-import {BottomNavigation, BottomNavigationAction, Box, Button} from "@mui/material";
+import {
+  AppBar,
+  BottomNavigation,
+  BottomNavigationAction,
+  Box,
+  Button,
+  Drawer,
+  Tab,
+  Toolbar,
+  Typography
+} from "@mui/material";
 import {Article, Settings} from "@mui/icons-material";
-import {BottomNavigationContext, BottomNavigationView} from "./components/BottomNavigationView";
+import {ErrorBoundary} from "./components/ErrorBoundary";
+import {Menu} from "./components/Menu";
 
 function App() {
   const [value, setValue] = React.useState(0);
@@ -14,28 +25,22 @@ function App() {
 
   return (
     <div className="App">
-      <BottomNavigationContext enabled={value}>
-        <BottomNavigationView id={0}>
-          <Button>
-            1
-          </Button>
-        </BottomNavigationView>
-        <BottomNavigationView id={1}>
-          <Button>
-            2
-          </Button>
-        </BottomNavigationView>
-      </BottomNavigationContext>
-      <Box sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
-        <BottomNavigation
-            showLabels
-            value={value}
-            onChange={handleChange}
+      <ErrorBoundary>
+        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+          <Toolbar>
+            <Typography variant="h6" noWrap component="div">
+              Multimin
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          open
         >
-          <BottomNavigationAction value={0} label="Instances" icon={<Article />} />
-          <BottomNavigationAction value={1} label="Settings" icon={<Settings />} />
-        </BottomNavigation>
-      </Box>
+          <Toolbar/>
+          <Menu/>
+        </Drawer>
+      </ErrorBoundary>
     </div>
   );
 }
